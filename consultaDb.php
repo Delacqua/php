@@ -9,6 +9,6 @@
 	//$tabella = $_SERVER['tabella'];
 	$tabella = 'produtos';
 
-    $outp = $dataDB->prendeTabella($tabella);
+    $outp = $dataDB->getTabella($tabella);
 
     echo json_encode($outp);

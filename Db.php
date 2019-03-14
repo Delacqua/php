@@ -37,7 +37,7 @@
 			return $this->$conn;
 		}
 
-		public function prendeTabella($tabella) {
+		public function getTabella($tabella) {
 
 			$result = $this->conn->query("SELECT * FROM $tabella");
 
@@ -53,5 +53,20 @@
         	return($_result);
 
     	}
+
+    	public function insertDati ($tabella, $data) {
+			
+			$sql = "INSERT INTO $tabella (nome,valore) VALUES ('$data->nome', '$data->valore')";
+
+			if(mysqli_query($this->conn, $sql)){
+	            http_response_code(200);
+	            return "Aggiornato";
+
+	        } else {
+	            echo "ERROR:  $sql. " . mysqli_error($this->conn);
+	        }
+			
+			return $sql;
+		}
 
 	}
